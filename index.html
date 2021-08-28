@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+    <head>
+        <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="projection, screen, tv">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro Pessoal</title>
+    </head>
+
+    <body>
+        <div class="centralizado">
+            <div class="descricao">
+
+                <div class="info">
+                    <h1>Seja bem vindo ao cadastro pessoal!</h1>
+                    <h2>Agradecemos o seu interesse em cadastrar-se no nosso sistema!</h2>
+                    <p>
+                        Preencha todos os campos obrigatórios, caso contrário os dados do cadastro
+                        não serão submetidos.
+                    </p>
+                </div>
+
+                <hr/>
+
+                <form onsubmit="sucesso()">
+                    <div class="grupo-de-caixa">
+                        <label for="nome">Nome completo</label>
+                        <input id="nome" type="text" required>
+                    </div>
+
+                    <div class="grupo-de-caixa">
+                        <label for="cpf">CPF</label>
+                        <input aria-required="true" id="cpf" maxlength="11" pattern="[0-9]+$" placeholder="Digite apenas números" required="numbers">
+                    </div>
+
+                    <div class="grupo-de-caixa">
+                        <label for="rg">Número do RG</label>
+                        <input aria-required="true" id="rg" placeholder="Digite apenas números" type="text" maxlenght="14">
+                    </div>
+            
+                    <div class="grupo-de-caixa">
+                        <label for="sexo">Selecione o seu sexo</label>
+                        <select id="sexo">
+                            <option value="f">Feminino</option>
+                            <option value="m">Masculino</option>
+                        </select>
+                    </div>
+            
+                    <div class="grupo-de-caixa">
+                        <label for="cep">CEP</label>
+                        <input class="id" id="cep" placeholder="Digite apenas números" type="text" required="numbers"> <br>
+                        <button type="button" onclick="carregaEndereco()">Insere endereço, bairro, cidade e Estado</button>
+                    </div>
+
+                    <div class="grupo-de-caixa">
+                        <label for="endereco">Endereço</label>
+                        <input id="endereco" readonly type="text" required="required">
+                    </div>
+            
+                    <div class="grupo-de-caixa">
+                        <label for="numero">Número da casa ou apartamento</label>
+                        <input id="numero" maxlenght="5" placeholder="Digite apenas números" required="numbers" type="text">
+                    </div>
+
+                    <div class="grupo-de-caixa">
+                        <label for="bairro">Bairro</label>
+                        <input id="bairro" readonly type="text">
+                    </div>
+
+                    <div class="grupo-de-caixa">
+                        <label for="cidade">Cidade</label>
+                        <input id="cidade" readonly type="text">
+                    </div>
+
+                    <div class="grupo-de-caixa">
+                        <label for="estado">Estado</label>
+                        <input id="estado" readonly type="text">
+                    </div>
+
+                    <div class="grupo-de-caixa">
+                        <label for="fixo">Número do telefone fixo</label>
+                        <input id="fixo" maxlength="11" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" placeholder="Digite apenas números" type="text">
+                    </div>
+
+                    <div class="grupo-de-caixa">
+                        <label for="cel">Número do celular</label>
+                        <input id="cel" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" placeholder="Digite apenas números" type="text" required="numbers">
+                    </div>
+                    <div>
+                        <input id="cadastrar" type="submit" value="Enviar dados">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="assets/js/script.js" type="text/javascript"></script>
+    </body>
+
+</html>
