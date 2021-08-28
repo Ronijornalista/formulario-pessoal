@@ -13,7 +13,7 @@ function validarCEP()
   }
 
   // Expressão regular de CEP
-  var valido = /^[0-9]{8}$/;
+  const valido = /^[0-9]{8}$/;
 
   // Checa se e válido
   if (valido.test(cep))
