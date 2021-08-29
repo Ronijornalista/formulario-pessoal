@@ -23,6 +23,163 @@ Visual Studio Code no Windows.
 
 ## Descrição do site
 
+### CSS
+
+Começamos com o seletor `*`, `*::before` e `*::after` que captura inteiramente o site para definir a propriedade `box-sizing` com um valor `border-box`, para que preenchimento e borda estejam incluídos na largura e altura de todo o site.
+
+Definimos a gride para ambos o html e o body a fim de podermos alinhar as divisões, secções ou elementos. Expandimos a altura e a largura para que o rodapé possa mover-se para o canto inferior:
+
+```css
+html,
+body {
+    display: grid;
+    height: 100%;
+    width: 100%;
+}
+```
+
+Definimos a cor de vermelho rosado suave para o corpo inteiro, e a cor preta de Eerie para todo o texto. Defimos a fonte externa do Google para todo o texto:
+
+```css
+body {
+    background-color: #F0877F;
+    color: #252220;
+    font-family: "Poppins", sans-serif;
+}
+```
+
+E centralizamos o grupo com uma nova cor e definimos a redondeza do seu contorno com um preenchimento para afastar o grupo. Depois do seletor `centralizado`, definimos a outra divisão com a mesma cor, mas definimos uma bordura com contorno bem arredondado. Para afastar-se da divisão com bordura `descricao`, adicionamos 2 ems de preenchimento ao formulário
+
+```css
+.centralizado {
+    background-color: #FFF9F2;
+    border-radius: 20px;
+    margin: auto;
+    padding: 2em;
+}
+
+.descricao {
+    background-color: #FFF9F2;
+    border: 1px solid #53011F;
+    border-radius: 20px;
+}
+
+.info,
+form {
+    padding: 2em;
+}
+```
+
+Adicionamos uma regra de linha horizontal, estilizando-a com dupla linha de tamanho médio, e centralizamo-na. Adicionamos o atributo "`after`" para colocar o conteúdo sobre a linha horizontal:
+
+```css
+hr {
+    border: none;
+    border-top: medium double #53011F;
+    color: #53011F;
+    overflow: visible;
+    padding: 0;
+    text-align: center;
+}
+
+hr:after {
+    background: #FFF9F2;
+    content: "§";
+    display: inline-block;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    position: relative;
+    top: -0.7em;
+}
+```
+
+Definimos a margem de 20 pixels para afastar os grupos de campo com rótulo:
+
+```css
+.grupo-de-caixa {
+    margin: 20px;
+}
+```
+
+Um rótulo renderizado para estar ao lado do campo, com uma margem a fim de afastar-se dos campos:
+
+```css
+label {
+    display: inline-block;
+    width: 320px;
+}WWS
+```
+
+Sobreescrevemos a aparência dos botões, dos campos, das listas suspensas, dos rótulos, das seleções com certas definições (tamanho da letra, nova fonte, remoção do contorno chato):
+
+```css
+label,
+input,
+select {
+    font-size: 16px;
+    padding: 5px;
+}
+
+button,
+label,
+input,
+select {
+    font-family: "Poppins", sans-serif;
+}
+
+input,
+select {
+    background-color: white;
+    border: 1px solid #53011F;
+    width: 250px;
+}
+
+input:hover,
+input:focus,
+input:active,
+input:focus-visible,
+input:focus-within,
+select:hover,
+select:focus,
+select:active,
+select:focus-visible,
+select:focus-within {
+    border: 1px solid #DC645F;
+    outline: 0;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: inherit;
+    display: inline-block;
+    line-height: inherit;
+    margin: 0;
+}
+
+button {
+    margin-left: 325px;
+    margin-top: 10px;
+    padding: 5px;
+    width: 250px;
+}
+
+button,
+#cadastrar {
+    background-color: #53011F;
+    border: none;
+    border-radius: 3px;
+    color: #FFF9F2;
+    font-family: "Bitter", serif;
+}
+
+button:hover,
+#cadastrar:hover {
+    background-color: #DC645F;
+}
+```
+
 ### HTML
 
 No ínício, começa com `<!DOCTYPE HTML>`, uma declaração para avisar aos navegadores que é um documento HTML, e dentro, tem `<html>` representa a raiz de um documento HTML e contém um atributo "lang" para declarar o idioma da página da web a fim de ajudar os mecanismos de busca e os navegadores. 
@@ -33,8 +190,8 @@ Dentro desse elemento, tem um elemento `<head>` designado para informar os metad
 
 - O `<link>` é um elemento que conecta os recursos externos aos documentos atuais para renderizar as coisas. Em seguida, os atributos:
   - O atributo "`rel`" é um relacionamento de tipo de arquivo;
-  - O atributo "`type`" é um tipo de arquivo;
-  - O atributo "`media`" especifica quais os dispositivos o documento deve ser renderizado.
+  - O atributo "`crossorigin`" é um método de origem de cruzamento
+  - O atributo "`href`" é um endereço do recurso externo
 
 - `<meta charset="UTF-8">`: É um elemento de metadado para a codificação e a renderização de caracteres para o documento HTML
 - `<meta http-equiv="X-UA-Compatible" content="IE=edge">`: É um elemento de metadado de fornecimento de HTTP para o conteúdo do navegador
@@ -77,18 +234,18 @@ Nele, temos:
 
 #### Fim
 
-O comando `<button type="button" onclick="validarCEP()">Checar a validade do CEP</button>` é um botão com um evento "onclick" que executa a função "validarCEP()" para checar se CEP é válido ou não. 
-
 O comando `<input id="cadastrar" type="submit" value="Enviar dados">` é um botão de submissão com um valor para renderizar
 
-O comando `<script src="assets/js/script-2.js" type="text/javascript"></script>` é elemento para anexar o arquivo externo em JavaScript e define o tipo de documento
+Temos um script interno que é um elemento para executar JavaScript interno.
 
 ### JavaScript
 
-Executamos uma função (`function`) chamada `validarCEP()`, que foi executada ao clicar o botão em HTML. Dentro de uma função, usamos `getElementById` para pegar o valor por meio de um identificador do campo de entrada. Então ao obter o valor, analisamos dois casos:
+Executamos uma primeira função (`function`) chamada `validarCPF()`, que foi executada ao clicar o botão em HTML. Dentro de uma função, usamos `getElementById` para pegar o valor por meio de um identificador do campo de entrada. Então ao obter o valor, analisamos dois casos:
 
-- Checamos se for (`if ()`) menor que 8 números (`length != 8`) de CEP, avisamos (`alert`) que o CEP deve ter 8 números sem hífen.
-- Pegamos a expressão regular de CEP para testar se é válido ou não – se válido, avisamos que é válido, senão avisamos que é inválido.
+- A vairável chamada `validar` obterá a expressão regular do CPF. A sua expressão regular é `/^[0-9]{11}$/`, que significa permitir os números 0 a 9 com 11 caracteres. \
+- Pegando a variável `validar` e o valor da variável `cpf` a fim de compararmos a expressão regular e o valor e vermos se são iguais. Se checarmos se é valido, já é valido sem avisar, senão avisamos que é inválido.
+
+A penúltima função `validarCelular()` é muito semelhante à função `validarCPF()`, mas é designado para detectar a validação do telefone celular. 
 
 No fim, na última função, dentro da qual temos um comando `window.location.href`, que encaminha paraa próxima página de mensagem enviada com sucesso. 
 
