@@ -3,16 +3,19 @@
 
 <!-- <html> representa a raiz de um documento HTML e contém um atributo "lang" para declarar o idioma da página da web a fim de ajudar os mecanismos de busca e os navegadores. -->
 <html lang="pt-br">
-    
+
     <!-- O elemento <head> designado para informar os metadados e buscar os recursos. Está entre <html> e <body>  -->
+
     <head>
         <!-- 
             - O <link> é um elemento que conecta os recursos externos aos documentos atuais para renderizar as coisas 
             - O atributo "rel" é um relacionamento de tipo de arquivo
-            - O atributo "type" é um tipo de arquivo
-            - O atributo "media" especifica quais os dispositivos o documento deve ser renderizado
+            - O atributo "crossorigin" é um método de origem de cruzamento
+            - O atributo "href" é um endereço do recurso externo
         -->
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="projection, screen, tv">
+        <link href="https://fonts.googleapis.com" rel="preconnect">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700;1,900&family=Poppins:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
         <!-- É um elemento de metadado para a codificação e a renderização de caracteres para o documento HTML -->
         <meta charset="UTF-8">
@@ -25,6 +28,193 @@
 
         <!-- O <title> é um elemento que renderiza o título para a aba do navegador -->
         <title>Cadastro Pessoal</title>
+
+        <!-- O <style> é usado para adicionar estilos a um elemento, como cor, fonte, tamanho e muito mais -->
+        <style>
+            /* 
+            
+            The box-sizing property allows us to include the padding and border in an element's total width and height.
+            If you set box-sizing: border-box; on an element, padding and border are included in the width and height.
+            
+            A propriedade "box-sizing" nos permite incluir o preenchimento e a bordura na largura e altura de um elemento.
+            Se você definir a "box-sizing: border-box" em um elemento, preenchimento e borda estão incluídos na largura e altura.
+
+            */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            /* Definimos a gride para ambos o html e o body a fim de podermos alinhar as divisões, secções ou elementos. Expandimos a altura e a largura para que o rodapé possa mover-se para o canto inferior */
+            html,
+            body {
+                display: grid;
+                height: 100%;
+                width: 100%;
+            }
+
+            /* Definimos a cor de vermelho rosado suave para o corpo inteiro, e a cor preta de Eerie para todo o texto. Defimos a fonte externa do Google para todo o texto */
+            body {
+                background-color: #F0877F;
+                color: #252220;
+                font-family: "Poppins", sans-serif;
+            }
+
+            /* Definimos a cor branca de neve oara o grupo, fazendo o contorno arreondado de 20 pixels, centralizando horizontal e verticalmente, e para finalizar, preenchimos 20 pixels para afastar a próxima divisão */
+            .centralizado {
+                background-color: #FFF9F2;
+                border-radius: 20px;
+                margin: auto;
+                padding: 2em;
+            }
+
+            /* Depois do seletor "centralizado", definimos a outra divisão com a mesma cor, mas definimos uma bordura com contorno bem arrendondado */
+            .descricao {
+                background-color: #FFF9F2;
+                border: 1px solid #53011F;
+                border-radius: 20px;
+            }
+
+            /* Para afastar-se da divisão com bordura (".descricao"), adicionamos 2 ems de preenchimento ao formulário */
+            .info,
+            form {
+                padding: 2em;
+            }
+
+            /* Adicionamos uma regra de linha horizontal, estilizando-a com dupla linha de tamanho médio, e centralizamo-na. */
+            hr {
+                border: none;
+                border-top: medium double #53011F;
+                color: #53011F;
+                overflow: visible;
+                padding: 0;
+                text-align: center;
+            }
+
+            /* Adicionamos o atributo "after" para colocar o conteúdo sobre a linha horizontal */
+            hr:after {
+                background: #FFF9F2;
+                content: "§";
+                display: inline-block;
+                font-size: 1.5em;
+                padding: 0 0.25em;
+                position: relative;
+                top: -0.7em;
+            }
+
+            /* Primeiro cabeçalho */
+            h1 {
+                font-weight: 900;
+            }
+
+            /* Segundo cabeçalho */
+            h2 {
+                font-weight: 600;
+            }
+
+            /* Definimos a fonte para os dois cabeçalhos */
+            h1,
+            h2 {
+                font-family: "Bitter", serif;
+            }
+
+            /* Definimos o tamanho para os parágrafos */
+            p {
+                font-size: 16px;
+            }
+
+            /* Definimos a margem de 20 pixels para afastar os grupos de campo com rótulo */
+            .grupo-de-caixa {
+                margin: 20px;
+            }
+
+            /* Um rótulo renderizado para estar ao lado do campo, com uma margem a fim de afastar-se dos campos */
+            label {
+                display: inline-block;
+                width: 320px;
+            }
+
+            /* Sobreescrevemos a aparência dos campos, das listas suspensas e dos rótulos, com uma definição do tamanho das letras e um preenchimento para eles se afastarem */
+            label,
+            input,
+            select {
+                font-size: 16px;
+                padding: 5px;
+            }
+
+            /* Sobreescrevemos a aparência dos botões, dos rótulos, dos campos de entrada e das seleções com uma definição de uma nova fonte */
+            button,
+            label,
+            input,
+            select {
+                font-family: "Poppins", sans-serif;
+            }
+
+            /* Sobreescrevemos os campos de entrada e as seleções com uma aparência nova */
+            input,
+            select {
+                background-color: white;
+                border: 1px solid #53011F;
+                width: 250px;
+            }
+
+            /* Removendo o cotorno desconfortável e mudamos de cor da bordura */
+            input:hover,
+            input:focus,
+            input:active,
+            input:focus-visible,
+            input:focus-within,
+            select:hover,
+            select:focus,
+            select:active,
+            select:focus-visible,
+            select:focus-within {
+                border: 1px solid #DC645F;
+                outline: 0;
+            }
+
+            /* Sobreescrevemos a aparência das seleções a fim de estilizarmos */
+            select {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                cursor: inherit;
+                display: inline-block;
+                line-height: inherit;
+                margin: 0;
+            }
+
+            /* Definimos as margens esquerda e superior a fim que um botão se afaste dos elementos, e definimos que a bordura seja preenchida e medida */
+            button {
+                margin-left: 325px;
+                margin-top: 10px;
+                padding: 5px;
+                width: 250px;
+            }
+
+            /* Estilizamos os botões, com uma nova aparência a fim de dar uma nova cor do fundo e da letra, e uma nova fonte */
+            button,
+            #cadastrar {
+                background-color: #53011F;
+                border: none;
+                border-radius: 3px;
+                color: #FFF9F2;
+                font-family: "Bitter", serif;
+            }
+
+            /* Ao clicar o botão, a cor muda-se */
+            button:hover,
+            #cadastrar:hover {
+                background-color: #DC645F;
+            }
+
+            /* Centralizamos um elemento */
+            #cadastrar {
+                display: block;
+                margin: 0 auto;
+            }
+        </style>
     </head>
 
     <!-- O elemento <body> renderiza todo o corpo de um documento -->
@@ -50,7 +240,7 @@
                 </div>
 
                 <!-- <hr/> é um mais frequentemente exibido como uma regra horizontal que é usada para separar conteúdo (ou definir uma alteração) numa página HTML -->
-                <hr/>
+                <hr>
 
                 <!-- 
                     - O <form> é um elemento de criação de formulário usado para onde o usuário possa preencher os campos 
@@ -64,7 +254,7 @@
                             - O <label> é um elemento que rotula a informação
                             - O atriuto "for" é um método que pega o identificador do campo de entrada
                          -->
-                        <label for="nome">Nome completo</label>
+                        <label for="nome">Nome completo*</label>
                         <!-- 
                             - O <input> é um elemento de campo de entrada para o usuário escrever o valor e preenchê-lo
                             - O atributo "id" é uma vinculação do campo ao rótulo
@@ -74,21 +264,22 @@
                     </div>
 
                     <div class="grupo-de-caixa">
-                        <label for="cpf">CPF</label>
+                        <label for="cpf">CPF*</label>
                         <!-- 
                             - O atributo "aria-required" é semelhante ao "required" para pessoas com deficiência
                             - O atributo "maxlength" define o limite de caracteres
                             - O atributo "placeholder" é um valor da dica ou do exemplo
                             - O atributo "pattern" é um método de expressão regular
+                            - O atributo "onChange" é um evento de 
                          -->
-                        <input aria-required="true" id="cpf" maxlength="11" pattern="[0-9]+$" placeholder="Digite apenas números" required="numbers">
+                        <input aria-required="true" id="cpf" maxlength="11" pattern="[0-9]+$" placeholder="Digite apenas números" required onChange="validarCPF()">
                     </div>
 
                     <div class="grupo-de-caixa">
                         <label for="rg">Número do RG</label>
-                        <input aria-required="true" id="rg" placeholder="Digite apenas números" type="text" maxlenght="14">
+                        <input id="rg" placeholder="Digite apenas números" type="text" maxlenght="14">
                     </div>
-            
+
                     <div class="grupo-de-caixa">
                         <label for="sexo">Selecione o seu sexo</label>
                         <select id="sexo">
@@ -96,37 +287,35 @@
                             <option value="m">Masculino</option>
                         </select>
                     </div>
-            
+
                     <div class="grupo-de-caixa">
                         <label for="cep">CEP</label>
-                        <input class="id" id="cep" placeholder="Digite apenas números" type="text" required="numbers"> <br>
-                        <!-- É um botão com um evento "onclick" que executa a função "validarCEP()" para checar se CEP é válido ou não. -->
-                        <button type="button" onclick="validarCEP()">Checar a validade do CEP</button>
+                        <input class="id" id="cep" placeholder="Digite apenas números" type="text" required> <br>
                     </div>
 
                     <div class="grupo-de-caixa">
-                        <label for="endereco">Endereço</label>
-                        <input id="endereco" readonly type="text" required="required">
-                    </div>
-            
-                    <div class="grupo-de-caixa">
-                        <label for="numero">Número da casa ou apartamento</label>
-                        <input id="numero" maxlenght="5" placeholder="Digite apenas números" required="numbers" type="text">
+                        <label for="endereco">Endereço*</label>
+                        <input id="endereco" type="text" required>
                     </div>
 
                     <div class="grupo-de-caixa">
-                        <label for="bairro">Bairro</label>
-                        <input id="bairro" readonly type="text">
+                        <label for="numero">Número da casa ou apartamento*</label>
+                        <input id="numero" placeholder="Digite apenas números" type="text" maxlenght="5" required>
                     </div>
 
                     <div class="grupo-de-caixa">
-                        <label for="cidade">Cidade</label>
-                        <input id="cidade" readonly type="text">
+                        <label for="bairro">Bairro*</label>
+                        <input id="bairro" type="text">
                     </div>
 
                     <div class="grupo-de-caixa">
-                        <label for="estado">Estado</label>
-                        <input id="estado" readonly type="text">
+                        <label for="cidade">Cidade*</label>
+                        <input id="cidade" type="text">
+                    </div>
+
+                    <div class="grupo-de-caixa">
+                        <label for="estado">Estado*</label>
+                        <input id="estado" type="text">
                     </div>
 
                     <div class="grupo-de-caixa">
@@ -136,7 +325,7 @@
 
                     <div class="grupo-de-caixa">
                         <label for="cel">Número do celular</label>
-                        <input id="cel" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" placeholder="Digite apenas números" type="text" required="numbers">
+                        <input id="cel" maxlength="13" pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$" placeholder="Digite apenas números" type="text" required onChange="validarCelular()">
                     </div>
 
                     <div>
@@ -147,8 +336,55 @@
             </div>
         </div>
 
-        <!-- Um elemento para anexar o arquivo externo em JavaScript e define o tipo de documento -->
-        <script src="assets/js/script-2.js" type="text/javascript"></script>
+        <!-- Um elemento para inserir JavaScript interno -->
+        <script type="text/javascript">
+            // Uma função
+            function validarCPF() 
+            {
+                // O método getElementById pega o identificador do campo de entrada, obtendo o valor
+                const cpf = document.getElementById('cpf').value;
+
+                // Expressão regular de CPF
+                const validar = /^[0-9]{11}$/;
+
+                // Checa se e válido
+                if (validar.test(cpf)) {
+                    console.log("O CPF está ótimo!")
+                }
+
+                // Senão avisa que um CEP inválido
+                else {
+                    alert("CPF inválido.");
+                }
+            }
+
+            // Outra função para validar o número de celular
+            function validarCelular() 
+            {
+                // O método getElementById pega o identificador do campo de entrada, obtendo o valor
+                const cel = document.getElementById('cel').value;
+
+                // Expressão regular de telefone celular
+                const validar = /\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$/;
+
+                // Checa se e válido
+                if (validar.test(cel)) 
+                {
+                    console.log("O celular está ótimo!")
+                }
+
+                // Senão avisa que um CEP inválido
+                else 
+                {
+                    alert("Número de celular inexistente, inválido ou incorreto");
+                }
+            }
+
+            // Ao rpeencher todos os campos, submete-se automaticamente e ncaminha para a próxima página
+            function sucesso() {
+                window.location.href = "enviado.html";
+            }
+        </script>
     </body>
 
 </html>
