@@ -91,3 +91,20 @@ Executamos uma função (`function`) chamada `validarCEP()`, que foi executada a
 - Pegamos a expressão regular de CEP para testar se é válido ou não – se válido, avisamos que é válido, senão avisamos que é inválido.
 
 No fim, na última função, dentro da qual temos um comando `window.location.href`, que encaminha paraa próxima página de mensagem enviada com sucesso. 
+
+## Referências
+
+### HTML
+
+- [O uso de `aria-required`](https://developer.mozilla.org/pt-BR/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-required_attribute)
+- [O uso de `pattern`](https://pt.stackoverflow.com/questions/182118/como-usar-o-atributo-pattern)
+- [O uso de expressão regular de números permitidos](https://www.w3schools.com/jsref/jsref_regexp_not_0-9.asp)
+- [A expressão regular de telefone celular](https://pt.stackoverflow.com/questions/46672/como-fazer-uma-express%C3%A3o-regular-para-telefone-celular)
+
+### JavaScript
+
+- [A expressão regular de CEP](https://dfilitto.com.br/video-aulas/validacao-do-cep-utilizando-expressao-regular/)
+
+### CSS
+
+- Meu amigo me ensinou a colocar as cores certas, mesmo que eu seja um deficiente visual. 
